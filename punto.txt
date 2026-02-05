@@ -5,3 +5,4 @@ DIFERENCIAS:
 Arrow Function: No tiene su propio this. Se vincula al this del contexto donde fue definida (herencia léxica).
 Regular Function: El this se define al momento de la ejecución, dependiendo de cómo se llame la función
 Métodos call, apply, bind: No pueden cambiar el contexto this de una arrow function.
+En regulares se puede usar el params.
