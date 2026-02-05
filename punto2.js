@@ -15,4 +15,4 @@ const impar2 = (x) => {
 }
 
 console.log(impar1(1)); 
- console.log(impar2(2));
+console.log(impar2(2));
