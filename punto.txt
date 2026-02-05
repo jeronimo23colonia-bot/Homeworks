@@ -1,2 +1,7 @@
 Arrow Functions: Perfectas para métodos internos, funciones de orden superior (map, filter, reduce) o cuando necesites mantener el contexto this del ámbito exterior.
 Funciones Regulares: Necesarias para métodos de objetos que requieren acceder al objeto mismo (this) o cuando necesitas constructores. 
+
+DIFERENCIAS:
+Arrow Function: No tiene su propio this. Se vincula al this del contexto donde fue definida (herencia léxica).
+Regular Function: El this se define al momento de la ejecución, dependiendo de cómo se llame la función
+Métodos call, apply, bind: No pueden cambiar el contexto this de una arrow function.

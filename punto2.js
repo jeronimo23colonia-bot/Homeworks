@@ -1,5 +1,3 @@
-
-
 function impar1 (x) {
     if (x % 2 !== 0) {
         return true;
