@@ -1,0 +1,2 @@
+Arrow Functions: Perfectas para métodos internos, funciones de orden superior (map, filter, reduce) o cuando necesites mantener el contexto this del ámbito exterior.
+Funciones Regulares: Necesarias para métodos de objetos que requieren acceder al objeto mismo (this) o cuando necesitas constructores. 
