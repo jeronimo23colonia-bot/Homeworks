@@ -12,5 +12,5 @@ const impar2 = (x) => {
     return false;
 }
 
-console.log(impar1(3)); // true
-console.log(impar2(4)); // false
+console.log(impar1(1)); 
+console.log(impar2(4)); 
