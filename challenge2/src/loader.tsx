@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 function Loader() {
     const [loading, setLoading] = useState(true);
     
@@ -20,6 +19,7 @@ function Loader() {
 
     return (
         <div>
+  
         </div>
     );
 }
