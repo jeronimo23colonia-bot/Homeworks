@@ -1,10 +1,18 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.tsx'
+import HelloWorld from './HelloWorld.tsx'
+import ReactDOM from 'react-dom/client'
+import PrintMessage from './PrintMessage.tsx'
+import Contador from './Contador.tsx'
+import EjemploContador from './Ejemplocontador.tsx'
 
-createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <HelloWorld />
+    <PrintMessage Message="Hello from PrintMessage component!" />
+    <PrintMessage Message="Hello from PrintMessage function!" />
+    <Contador/> 
+    <EjemploContador/>
+  </StrictMode>
+) 
+
