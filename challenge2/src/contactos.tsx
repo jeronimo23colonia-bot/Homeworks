@@ -6,7 +6,7 @@ interface Contacto {
   telefono: string;
 }
 
-function ModificarContactos({ contactos, setContactos }: { contactos: Contacto[]; setContactos: React.Dispatch<React.SetStateAction<Contacto[]>> }) {
+function Contactos({ contactos, setContactos }: { contactos: Contacto[]; setContactos: React.Dispatch<React.SetStateAction<Contacto[]>> }) {
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
   const [idEditar, setIdEditar] = useState<number | null>(null);
@@ -54,4 +54,4 @@ function ModificarContactos({ contactos, setContactos }: { contactos: Contacto[]
   );
 }
 
-export default ModificarContactos;
+export default Contactos;

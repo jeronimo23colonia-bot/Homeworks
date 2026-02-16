@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ModificarContactos from "./modificarcontactos";  
+import Contactos from "./contactos";  
 
 function Loader() {
     const [loading, setLoading] = useState(true);
@@ -25,7 +25,7 @@ function Loader() {
 
     return (
         <>
-            <ModificarContactos contactos={contactos} setContactos={setContactos} />
+            <Contactos contactos={contactos} setContactos={setContactos} />
         </>
     );
 }
