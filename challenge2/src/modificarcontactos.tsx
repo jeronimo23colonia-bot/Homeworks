@@ -29,23 +29,15 @@ function ModificarContactos({ contactos, setContactos }: { contactos: Contacto[]
     setTelefono(contacto.telefono);
   };
 
-  const actualizar = () => {
-    setContactos(contactos.map(c => 
-      c.id === idEditar ? { ...c, nombre, telefono } : c
-    ));
-    setIdEditar(null);
-    setNombre("");
-    setTelefono("");
-  };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Modificar Contactos</h1>
+    <div >
+      <h1>Contactos</h1>
 
       <div style={{ marginBottom: "20px", border: "1px solid #ccc", padding: "10px" }}>
         <input placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} style={{ display: "block", marginBottom: "5px" }} />
         <input placeholder="Teléfono" value={telefono} onChange={(e) => setTelefono(e.target.value)} style={{ display: "block", marginBottom: "5px" }} />
-        <button onClick={idEditar ? actualizar : agregar}>{idEditar ? "Actualizar" : "Agregar"}</button>
+        <button onClick={idEditar ? () => { setContactos(contactos.map(c => c.id === idEditar ? { ...c, nombre, telefono } : c)); setIdEditar(null); setNombre(""); setTelefono(""); } : agregar}>{idEditar ? "Actualizar" : "Agregar"}</button>
         {idEditar && <button onClick={() => { setIdEditar(null); setNombre(""); setTelefono(""); }}>Cancelar</button>}
       </div>
 
