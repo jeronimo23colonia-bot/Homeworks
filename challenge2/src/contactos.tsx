@@ -1,15 +1,15 @@
-const contacto = [
-  { id: 1, nombre: "Juan Pérez", email: "juan.perez@example.com", telefono: "123-456-7890" },
-  { id: 2, nombre: "María López", email: "maria.lopez@example.com", telefono: "098-765-4321" },
-  { id: 3, nombre: "Carlos García", email: "carlos.garcia@example.com", telefono: "555-123-4567" },
-];
-function Contactos() {
+interface Contacto {
+  id: number;
+  nombre: string;
+  telefono: string;
+}
+
+function Contactos({ contactos }: { contactos: Contacto[] }) {
   return <>
   {
-  contacto.map((contacto) => { 
-     return <p key={contacto.id}>{contacto.nombre} - {contacto.email} - {contacto.telefono}</p>
+  contactos.map((contacto) => { 
+     return <p key={contacto.id}>{contacto.nombre} - {contacto.telefono}</p>
     })
-
   }
   </>
 }
