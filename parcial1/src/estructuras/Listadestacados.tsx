@@ -1,4 +1,4 @@
-import { Vehiculo } from "./ListaVehiculos"
+import type { Vehiculo } from "./Listavehiculos"
 
 class NodoDestacado {
   vehiculo: Vehiculo

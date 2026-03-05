@@ -1,4 +1,4 @@
-import { Vehiculo } from "./ListaVehiculos"
+import type { Vehiculo } from "./Listavehiculos"
 
 export interface Alquiler {
   vehiculo: Vehiculo
