@@ -1,4 +1,4 @@
-import type { Vehiculo } from "./Listavehiculos"
+import type { Vehiculo } from "./ListaVehiculos.tsx"
 
 export interface Alquiler {
   vehiculo: Vehiculo
@@ -45,5 +45,17 @@ export class HistorialAlquileres {
     }
 
     return lista
+  }
+
+  imprimir(): string {
+    let texto = ""
+    let actual = this.cabeza
+
+    while (actual) {
+      texto += actual.alquiler.vehiculo.marca + " ⇄ "
+      actual = actual.siguiente
+    }
+
+    return texto + "null"
   }
 }

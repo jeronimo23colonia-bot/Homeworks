@@ -1,4 +1,4 @@
-import type { Alquiler } from "../estructuras/Historialalquileres"
+import type { Alquiler } from "../estructuras/HistorialAlquileres"
 
 interface Props {
   historial: Alquiler[]
@@ -7,7 +7,7 @@ interface Props {
 export default function Historial({ historial }: Props) {
   return (
     <div>
-      <h2>Historial de alquileres</h2>
+      <h2>Historial de alquileres (Lista doble)</h2>
 
       {historial.map((h, i) => (
         <div key={i}>

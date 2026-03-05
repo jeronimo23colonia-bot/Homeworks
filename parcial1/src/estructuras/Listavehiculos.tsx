@@ -67,4 +67,16 @@ export class ListaVehiculos {
 
     return lista
   }
+
+  imprimir(): string {
+    let texto = ""
+    let actual = this.cabeza
+
+    while (actual) {
+      texto += actual.vehiculo.marca + " → "
+      actual = actual.siguiente
+    }
+
+    return texto + "null"
+  }
 }

@@ -1,4 +1,4 @@
-import type { Inversionista } from "../estructuras/Listainversionistas"
+import type { Inversionista } from "../estructuras/ListaInversionistas.tsx"
 
 interface Props {
   inversionistas: Inversionista[]
@@ -7,9 +7,9 @@ interface Props {
 export default function Inversionistas({ inversionistas }: Props) {
   return (
     <div>
-      <h2>Inversionistas activos (lista circular doble)</h2>
+      <h2>Inversionistas activos (Lista circular doble)</h2>
 
-      {inversionistas.map((i) => (
+      {inversionistas.map(i => (
         <div key={i.id}>
           {i.nombre} - Capital: {i.capital}
         </div>

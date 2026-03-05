@@ -1,4 +1,4 @@
-import type { Vehiculo } from "../estructuras/Listavehiculos.tsx"
+import type { Vehiculo } from "../estructuras/ListaVehiculos.tsx"
 
 interface Props {
   vehiculos: Vehiculo[]
@@ -8,9 +8,9 @@ interface Props {
 export default function VehiculosDisponibles({ vehiculos, alquilar }: Props) {
   return (
     <div>
-      <h2>Vehículos disponibles</h2>
+      <h2>Vehículos disponibles (Lista enlazada)</h2>
 
-      {vehiculos.map((v) => (
+      {vehiculos.map(v => (
         <div key={v.id}>
           {v.marca} {v.modelo}
           <button onClick={() => alquilar(v.id)}>Alquilar</button>

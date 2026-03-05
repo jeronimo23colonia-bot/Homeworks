@@ -1,4 +1,4 @@
-import type { Vehiculo } from "./Listavehiculos"
+import type { Vehiculo } from "./ListaVehiculos.tsx"
 
 class NodoDestacado {
   vehiculo: Vehiculo
@@ -34,12 +34,42 @@ export class ListaDestacados {
   }
 
   siguiente(): Vehiculo | null {
-    if (!this.actual) return null
+    if (!this.actual || !this.actual.siguiente) return null
     this.actual = this.actual.siguiente
-    return this.actual?.vehiculo || null
+    return this.actual.vehiculo
   }
 
   obtenerActual(): Vehiculo | null {
     return this.actual?.vehiculo || null
+  }
+
+  obtenerTodos(): Vehiculo[] {
+    const lista: Vehiculo[] = []
+
+    if (!this.cabeza) return lista
+
+    let temp = this.cabeza
+
+    do {
+      lista.push(temp.vehiculo)
+      temp = temp.siguiente!
+    } while (temp !== this.cabeza)
+
+    return lista
+  }
+  
+  imprimir(): void {
+    if (!this.cabeza) {
+      console.log("Lista vacía")
+      return
+    }
+    let temp = this.cabeza
+    const vehiculos = []
+    do {
+      vehiculos.push(`${temp.vehiculo.marca} ${temp.vehiculo.modelo}`)
+      temp = temp.siguiente!
+    } while (temp !== this.cabeza)
+    console.log("Lista circular:", vehiculos.join(" → "), "→ [vuelve al inicio]")
+    console.log("Actual:", this.actual?.vehiculo.marca, this.actual?.vehiculo.modelo)
   }
 }

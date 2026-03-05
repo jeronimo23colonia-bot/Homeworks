@@ -4,21 +4,21 @@ export interface Inversionista {
   capital: number
 }
 
-class NodoInversionista {
+class NodoInv {
   inversionista: Inversionista
-  siguiente: NodoInversionista | null = null
-  anterior: NodoInversionista | null = null
+  siguiente: NodoInv | null = null
+  anterior: NodoInv | null = null
 
-  constructor(inversionista: Inversionista) {
-    this.inversionista = inversionista
+  constructor(i: Inversionista) {
+    this.inversionista = i
   }
 }
 
 export class ListaInversionistas {
-  cabeza: NodoInversionista | null = null
+  cabeza: NodoInv | null = null
 
-  agregar(inversionista: Inversionista) {
-    const nuevo = new NodoInversionista(inversionista)
+  agregar(inv: Inversionista) {
+    const nuevo = new NodoInv(inv)
 
     if (!this.cabeza) {
       nuevo.siguiente = nuevo
