@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+  --sand-50: #fbf7f2;
+  --sand-100: #f4ece2;
+  --sand-200: #e7d9c7;
+  --ink-800: #2f251c;
+  --ink-700: #4f3b2b;
+  --teal-500: #0b8f8a;
+  --teal-600: #0a7773;
+  --rose-500: #df5d70;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--ink-800);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(11, 143, 138, 0.2), transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(223, 93, 112, 0.16), transparent 35%),
+    linear-gradient(180deg, var(--sand-50), #fff);
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.loading-shell {
+  background: linear-gradient(120deg, var(--teal-600), var(--rose-500));
+}
+
+.auth-card,
+.tasks-panel {
+  width: min(100%, 980px);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(8px);
+}
+
+.auth-card {
+  max-width: 540px;
+}
+
+.display-title {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--teal-600);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+}
+
+.form-control {
+  border-radius: 0.8rem;
+  border-color: var(--sand-200);
+  min-height: 2.85rem;
+
+  &:focus {
+    border-color: var(--teal-500);
+    box-shadow: 0 0 0 0.2rem rgba(11, 143, 138, 0.2);
+  }
+}
+
+.btn {
+  border-radius: 0.8rem;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, var(--teal-500), var(--teal-600));
+  border: none;
+
+  &:hover,
+  &:focus {
+    background: linear-gradient(120deg, #0fa39d, var(--teal-500));
+  }
+}
+
+.tasks-shell {
+  padding-block: 2rem;
+}
+
+.task-form {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(120deg, rgba(244, 236, 226, 0.7), rgba(255, 255, 255, 0.8));
+}
+
+.task-row {
+  border-color: var(--sand-200) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.8rem 1.6rem rgba(79, 59, 43, 0.09);
+  }
+}
+
+.empty-state {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px dashed var(--sand-200);
+}
+
+@media (max-width: 768px) {
+  .auth-card,
+  .tasks-panel {
+    border-radius: 1rem;
+  }
+}
