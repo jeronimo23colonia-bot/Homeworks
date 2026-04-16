@@ -1,4 +1,4 @@
-import type { NodeType, TreeNode } from './types'
+import type { NodeType, TreeNode } from './tipos'
 
 export interface InsertResult {
   ok: boolean

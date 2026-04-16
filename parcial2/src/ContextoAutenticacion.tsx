@@ -4,8 +4,8 @@ import {
   useState,
   type ReactNode,
 } from 'react'
-import { isRegisteredUser, loadRegisteredUsers } from './mockDb'
-import { AuthContext, type AuthContextValue } from './auth-store'
+import { isRegisteredUser, loadRegisteredUsers } from './baseDatosMock'
+import { AuthContext, type AuthContextValue } from './almacenAutenticacion'
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [userEmail, setUserEmail] = useState<string | null>(null)

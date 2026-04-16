@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
-import './App.css'
-import { useAuth } from './auth-store'
-import { loadTree, saveTree } from './mockDb'
-import { collectFolderNodes, createNode, insertChildNode } from './treeUtils'
-import type { NodeType, TreeNode } from './types'
+import './Aplicacion.css'
+import { useAuth } from './almacenAutenticacion'
+import { loadTree, saveTree } from './baseDatosMock'
+import { collectFolderNodes, createNode, insertChildNode } from './utilidadesArbol'
+import type { NodeType, TreeNode } from './tipos'
 
 const ROOT_ID = 'root-folder'
 
@@ -98,7 +98,7 @@ function TreeNodeItem({
   )
 }
 
-function App() {
+function Aplicacion() {
   const persistedTree = loadTree()
   const [tree, setTree] = useState<TreeNode>(persistedTree ?? initialTree)
   const [selectedFolderId, setSelectedFolderId] = useState<string>(ROOT_ID)
@@ -289,4 +289,4 @@ function App() {
   )
 }
 
-export default App
+export default Aplicacion

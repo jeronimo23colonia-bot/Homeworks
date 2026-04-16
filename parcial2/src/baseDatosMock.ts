@@ -1,4 +1,4 @@
-import type { AppUser, TreeNode } from './types'
+import type { AppUser, TreeNode } from './tipos'
 
 const TREE_KEY = 'parcial2.tree.v1'
 const USERS_KEY = 'parcial2.users.v1'
