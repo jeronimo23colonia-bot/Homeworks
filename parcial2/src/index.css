@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700&display=swap');
+
+:root {
+  --sand-100: #fffaf0;
+  --sand-200: #fdecd2;
+  --panel-bg: rgba(255, 255, 255, 0.92);
+  --slate-900: #1e293b;
+  --slate-800: #334155;
+  --slate-700: #475569;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --teal-700: #0f766e;
+  --teal-500: #14b8a6;
+  --font-body: 'Sora', 'Segoe UI', Tahoma, sans-serif;
+  --font-heading: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--slate-800);
+  font-family: var(--font-body);
+  background:
+    radial-gradient(circle at 6% 8%, rgba(20, 184, 166, 0.25), transparent 30%),
+    radial-gradient(circle at 90% 2%, rgba(251, 191, 36, 0.22), transparent 28%),
+    linear-gradient(165deg, var(--sand-100), #fff, var(--sand-200));
+  min-height: 100vh;
+}
+
+h1,
+h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-heading);
+  color: var(--slate-900);
+}
+
+h1 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.12;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+}
+
+p {
+  margin: 0;
+}
