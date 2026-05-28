@@ -1,121 +1,125 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useMemo, useState } from 'react'
+import type { FormEvent } from 'react'
+import { cancionesIniciales } from './datos/canciones'
+import type { Cancion } from './tipos'
+import { TrieCanciones } from './estructuras/TrieCanciones'
+import { MonticuloMax } from './estructuras/MonticuloMax'
+import { GrafoCanciones } from './estructuras/GrafoCanciones'
+import BuscadorCanciones from './componentes/BuscadorCanciones'
+import InsertarCancion from './componentes/InsertarCancion'
+import RankingPopulares from './componentes/RankingPopulares'
+import RecomendacionesRelacionadas from './componentes/RecomendacionesRelacionadas'
+import PanelVisual from './componentes/PanelVisual'
+import './App.scss'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [canciones, setCanciones] = useState<Cancion[]>(cancionesIniciales)
+  const [busqueda, setBusqueda] = useState('')
+  const [mensajeBusqueda, setMensajeBusqueda] = useState('Escribe un título para buscar una canción')
+  const [sugerencias, setSugerencias] = useState<string[]>([])
+  const [recomendaciones, setRecomendaciones] = useState<Cancion[]>([])
+
+  const trieCanciones = useMemo(() => {
+    const trie = new TrieCanciones()
+    canciones.forEach((cancion) => trie.insertar(cancion.titulo))
+    return trie
+  }, [canciones])
+
+  const grafoCanciones = useMemo(() => new GrafoCanciones(canciones), [canciones])
+
+  const topCanciones = useMemo(
+    () => MonticuloMax.topN(canciones, 5, (a, b) => a.reproducciones - b.reproducciones),
+    [canciones],
+  )
+
+  const totalReproducciones = useMemo(
+    () => canciones.reduce((total, cancion) => total + cancion.reproducciones, 0),
+    [canciones],
+  )
+
+  const actualizarBusqueda = (texto: string) => {
+    setBusqueda(texto)
+    if (texto.trim() === '') {
+      setSugerencias([])
+      setMensajeBusqueda('Escribe un título para buscar una canción')
+      return
+    }
+
+    const sugerenciasNuevas = trieCanciones.sugerencias(texto)
+    setSugerencias(sugerenciasNuevas)
+  }
+
+  const buscarPorTitulo = (titulo: string) => {
+    const cancion = canciones.find((item) => item.titulo.toLowerCase() === titulo.toLowerCase())
+    if (!cancion) {
+      setMensajeBusqueda(`La canción "${titulo}" existe pero no se encontró en los datos.`)
+      setRecomendaciones([])
+      return
+    }
+
+    const recomendacionesCercanas = grafoCanciones.obtenerRecomendaciones(cancion.id)
+    setMensajeBusqueda(`La canción "${titulo}" existe y se recomiendan canciones similares.`)
+    setRecomendaciones(recomendacionesCercanas)
+  }
+
+  const buscarCancion = (evento: FormEvent<HTMLFormElement>) => {
+    evento.preventDefault()
+    const titulo = busqueda.trim()
+    if (titulo === '') {
+      setMensajeBusqueda('Escribe el título de una canción para buscarla')
+      setRecomendaciones([])
+      return
+    }
+
+    if (!trieCanciones.buscar(titulo)) {
+      setMensajeBusqueda(`La canción "${titulo}" no existe en la plataforma.`)
+      setRecomendaciones([])
+      return
+    }
+
+    buscarPorTitulo(titulo)
+  }
+
+  const seleccionarSugerencia = (texto: string) => {
+    setBusqueda(texto)
+    setSugerencias([])
+    if (trieCanciones.buscar(texto)) {
+      buscarPorTitulo(texto)
+    }
+  }
+
+  const insertarCancion = (cancion: Omit<Cancion, 'id'>) => {
+    const id = `${Date.now()}-${Math.random().toString(16).slice(2)}`
+    setCanciones((actual) => [...actual, { id, ...cancion }])
+    setMensajeBusqueda(`Canción "${cancion.titulo}" insertada correctamente.`)
+    setRecomendaciones([])
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+    <main className="app">
+      <header className="app__cabecera">
+        <h1>Spotify Educativo</h1>                
+      </header>
+
+      <section className="app__contenido">
+        <InsertarCancion onInsertar={insertarCancion} />
+
+        <BuscadorCanciones
+          texto={busqueda}
+          sugerencias={sugerencias}
+          resultado={mensajeBusqueda}
+          onTexto={actualizarBusqueda}
+          onBuscar={buscarCancion}
+          onSeleccionar={seleccionarSugerencia}
+        />
+
+        <PanelVisual totalCanciones={canciones.length} totalReproducciones={totalReproducciones} />
+
+        <RankingPopulares canciones={topCanciones} />
+
+        <RecomendacionesRelacionadas recomendaciones={recomendaciones} />
       </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    </main>
   )
 }
 

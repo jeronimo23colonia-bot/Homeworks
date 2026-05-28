@@ -1,0 +1,273 @@
+.app {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #12141f 0%, #1d2331 100%);
+  color: #eceff4;
+  padding: 32px;
+  display: grid;
+  gap: 32px;
+  font-family: 'Segoe UI', sans-serif;
+
+  &__cabecera {
+    text-align: center;
+    display: grid;
+    gap: 12px;
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 3rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: #a0a9be;
+      margin: 0;
+      max-width: 680px;
+      margin-inline: auto;
+    }
+  }
+
+  &__contenido {
+    display: grid;
+    gap: 24px;
+  }
+}
+
+.seccion {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16);
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 1.55rem;
+    color: #f8fafc;
+  }
+}
+
+.buscador {
+  @extend .seccion;
+
+  &__formulario {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 18px;
+
+    label {
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+
+    input {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #edf2f7;
+      padding: 14px 16px;
+      font-size: 1rem;
+      outline: none;
+
+      &:focus {
+        border-color: #8f93ff;
+        box-shadow: 0 0 0 4px rgba(143, 147, 255, 0.18);
+      }
+    }
+
+    button {
+      width: fit-content;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 14px;
+      color: #101828;
+      background: #a78bfa;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  &__sugerencias {
+    ul {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      list-style: none;
+      margin: 8px 0 0;
+
+      button {
+        width: 100%;
+        text-align: left;
+        padding: 12px 16px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.08);
+        color: #e2e8f0;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__resultado {
+    margin-top: 18px;
+    color: #cbd5e1;
+  }
+}
+
+.ranking {
+  @extend .seccion;
+
+  ol {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  li {
+    display: grid;
+    gap: 6px;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    h3 {
+      margin: 0;
+      color: #f8fafc;
+    }
+
+    p,
+    span {
+      margin: 0;
+      color: #cbd5e1;
+    }
+  }
+}
+
+.recomendaciones {
+  @extend .seccion;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+
+  li {
+    padding: 16px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    gap: 6px;
+
+    strong {
+      color: #f8fafc;
+    }
+
+    span {
+      color: #cbd5e1;
+    }
+  }
+}
+
+.panel-visual {
+  @extend .seccion;
+
+  &__grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  article {
+    background: rgba(143, 147, 255, 0.12);
+    border: 1px solid rgba(143, 147, 255, 0.2);
+    border-radius: 18px;
+    padding: 22px;
+    display: grid;
+    gap: 10px;
+
+    h3 {
+      margin: 0;
+      color: #f8fafc;
+      font-size: 2rem;
+    }
+
+    p {
+      margin: 0;
+      color: #dbeafe;
+    }
+  }
+
+  &__nota {
+    margin-top: 20px;
+    color: #cbd5e1;
+  }
+}
+
+.insertar-cancion {
+  @extend .seccion;
+
+  &__formulario {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 18px;
+
+    label {
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+
+    input {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #edf2f7;
+      padding: 14px 16px;
+      font-size: 1rem;
+      outline: none;
+
+      &:focus {
+        border-color: #8f93ff;
+        box-shadow: 0 0 0 4px rgba(143, 147, 255, 0.18);
+      }
+    }
+
+    button {
+      width: fit-content;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 14px;
+      color: #101828;
+      background: #a78bfa;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  &__nota {
+    margin-top: 10px;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .app {
+    padding: 20px;
+  }
+}

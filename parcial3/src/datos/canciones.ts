@@ -1,0 +1,68 @@
+import type { Cancion } from '../tipos'
+
+export const cancionesIniciales: Cancion[] = [
+  {
+    id: '1',
+    titulo: 'Noche de verano',
+    artista: 'Luz Azul',
+    genero: 'Pop',
+    reproducciones: 1520,
+    similares: [],
+  },
+  {
+    id: '2',
+    titulo: 'Ritmo del alma',
+    artista: 'Viento Solar',
+    genero: 'Electrónica',
+    reproducciones: 1180,
+    similares: [],
+  },
+  {
+    id: '3',
+    titulo: 'Luz del día',
+    artista: 'Olas Cósmicas',
+    genero: 'Indie',
+    reproducciones: 1840,
+    similares: [],
+  },
+  {
+    id: '4',
+    titulo: 'Camino del mar',
+    artista: 'Río Lunar',
+    genero: 'Indie',
+    reproducciones: 940,
+    similares: [],
+  },
+  {
+    id: '5',
+    titulo: 'Amanecer mágico',
+    artista: 'Sol Interior',
+    genero: 'Pop',
+    reproducciones: 1370,
+    similares: [],
+  },
+  {
+    id: '6',
+    titulo: 'Cantos de luna',
+    artista: 'Estrella Norte',
+    genero: 'Electrónica',
+    reproducciones: 870,
+    similares: [],
+  },
+  {
+    id: '7',
+    titulo: 'Corazón urbano',
+    artista: 'Neón Urbano',
+    genero: 'Pop',
+    reproducciones: 1450,
+    similares: [],
+  },
+  {
+    id: '8',
+    titulo: 'Sueños eléctricos',
+    artista: 'Circuito Sonoro',
+    genero: 'Electrónica',
+    reproducciones: 1020,
+    similares: [],
+  },
+]
